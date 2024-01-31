@@ -55,13 +55,6 @@ class Character extends MovableObject {
     IMAGES_HURT = [
         'img/2_character_pepe/4_hurt/H-41.png',
         'img/2_character_pepe/4_hurt/H-42.png',
-        'img/2_character_pepe/4_hurt/H-42.png',
-        'img/2_character_pepe/4_hurt/H-42.png',
-        'img/2_character_pepe/4_hurt/H-42.png',
-        'img/2_character_pepe/4_hurt/H-42.png',
-        'img/2_character_pepe/4_hurt/H-42.png',
-        'img/2_character_pepe/4_hurt/H-42.png',
-        'img/2_character_pepe/4_hurt/H-42.png',
         'img/2_character_pepe/4_hurt/H-43.png'
     ];
     height = 300;
@@ -115,9 +108,7 @@ class Character extends MovableObject {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
             } else if(this.isHurt()){
-                if (this.energy > 0) {
-                    this.playAnimation(this.IMAGES_HURT);
-                    }
+                this.playAnimation(this.IMAGES_HURT);
             } else if (this.aboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
             } else {
@@ -137,12 +128,4 @@ class Character extends MovableObject {
         }, 1000 / 10);
 
     }
-    // isHurt(){
-    //     setInterval(() => {
-    //         if (this.energy > 0) {
-    //         this.playAnimation(this.IMAGES_HURT);
-    //         }
-    //     }, 100);
-    // }
-
 }

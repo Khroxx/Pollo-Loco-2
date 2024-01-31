@@ -4,6 +4,7 @@ class Keyboard {
     JUMP = false; // 32 & 38
     DOWN = false;
     SPACE = false; // 32
+    F = false; // 70
 
 
 }

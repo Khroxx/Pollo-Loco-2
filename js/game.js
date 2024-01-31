@@ -19,6 +19,9 @@ document.addEventListener('keydown', (event) => {
     if(event.keyCode == 38 || event.keyCode == 32) {
         keyboard.JUMP = true;
     } 
+    if(event.keyCode == 70){
+        keyboard.F = true;
+    }
 })
 document.addEventListener('keyup', (event) => {
     if(event.keyCode == 68 || event.keyCode == 39) {
@@ -30,4 +33,7 @@ document.addEventListener('keyup', (event) => {
     if(event.keyCode == 38 || event.keyCode == 32) {
         keyboard.JUMP = false;
     } 
+    if(event.keyCode == 70){
+        keyboard.F = false;
+    }
 })

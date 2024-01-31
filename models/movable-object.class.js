@@ -1,11 +1,4 @@
-class MovableObject {
-    x = 100;
-    y = 330;
-    height = 300;
-    width = 150;
-    img;
-    imageCache = {};
-    currentImage = 0;
+class MovableObject extends DrawableObject{
     speed = 0.2;
     otherDirection = false;
     speedY = 0;
@@ -13,21 +6,8 @@ class MovableObject {
     energy = 100;
     lastHit = 0;
 
-    //draws objects
-    draw(ctx){
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
 
-    // draws a colored frame around given classes
-    drawFrame(ctx){
-        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
-        ctx.beginPath();
-        ctx.lineWidth = '5';
-        ctx.strokeStyle = 'blue';
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
-        }
-    }
+
 
     //apllies gravity to object
     applyGravity(){
@@ -43,7 +23,12 @@ class MovableObject {
 
     //detects if object is above set ground
     aboveGround(){
-        return this.y < 330;
+        if(this instanceof ThrowableObject) {
+            return true
+        } else {
+            return this.y < 330;
+        }
+ 
     }
 
     // Pepe collides with object
@@ -56,22 +41,6 @@ class MovableObject {
         //         (this.y + this.offsetY + this.height) >= obj.y &&
         //         (this.y + this.offsetY) <= (obj.y + obj.height) && 
         //         obj.onCollisionCourse; 
-    }
-
-    //loads the image path for every object
-    loadImage(path){
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    //loags the array for given object path
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path]= img;
-        });
-
     }
 
     //moves object to the right
@@ -99,11 +68,11 @@ class MovableObject {
 
 
     hit(){
-        this.energy -= 20; 
+        this.energy -= 5; 
         if (this.energy <= 0){
             this.energy = 0
         } else {
-            this.lastHit =  new Date().getTime;
+            this.lastHit =  new Date().getTime();
         }
     }
 
@@ -112,10 +81,10 @@ class MovableObject {
     }
 
 
-    //difference in millisends
+    //difference between the current time and the last time the object was hit, can only be hurt again after 5 seconds
     isHurt(){
         let timepassed = new Date().getTime() - this.lastHit;
         timepassed = timepassed / 1000;
-        return timepassed < 5;
+        return timepassed < 0.5;
     }
 }
