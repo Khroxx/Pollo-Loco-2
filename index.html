@@ -3,25 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pepe</title>
-    <script src="/models/drawable-object.class.js"></script>
-    <script src="/models/movable-object.class.js"></script>
-    <script src="/models/chicken.class.js"></script>
-    <script src="/models/character.class.js"></script>
-    <script src="/models/cloud.class.js"></script>
-    <script src="/models/endboss.class.js"></script>
-    <script src="/models/statusbar.class.js"></script>
-    <script src="/models/background-object.class.js"></script>
+    <title>Pollo Loco</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script src="/js/script.js"></script>
+    <script src="/models/sounds.class.js"></script>
     <script src="/models/world.class.js"></script>
+    <script src="/models/drawable-objects.class.js"></script>
+    <script src="/models/moveable-objects.class.js"></script>
     <script src="/models/keyboard.class.js"></script>
-    <script src="/models/level.class.js"></script>
+    <script src="/models/character-health.class.js"></script>
+    <script src="/models/boss-health.class.js"></script>
+    <script src="/models/bottle-amount.class.js"></script>
+    <script src="/models/coins-amount.class.js"></script>
+    <script src="/models/cloud.class.js"></script>
     <script src="/models/throwable-object.class.js"></script>
+    <script src="/models/chicken.class.js"></script>
+    <script src="/models/chicken-small.class.js"></script>
+    <script src="/models/character.class.js"></script>
+    <script src="/models/bottle.class.js"></script>
+    <script src="/models/coins.class.js"></script>
+    <script src="/models/endboss.class.js"></script>
+    <script src="/models/background-object.class.js"></script>
+    <script src="/models/level.class.js"></script>
     <script src="/levels/level1.js"></script>
     <script src="/js/game.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- FAVICON -->
+
 </head>
-<body onload="init()">
-    <h1>El Pollo Loco</h1>
-    <canvas id="canvas" width="1280" height="720"></canvas>
+<body>
+        <h1 id="headline">El pollo loco</h1>
+        <div class="gameScreen" id="gameScreen">
+            <div id="startScreen">
+                <button id="startGameButton" onclick="playGame()">START</button>
+                <div id="loadingScreen" style="display: none;">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+            <canvas id="canvas" width="1280" height="720"></canvas>
+            <div id="gameLostScreen">
+                <div class="gameEndButtons">
+                    <button class="restartGameButton" onclick="playGame()">RESTART</button>
+                    <button class="backHomeButton" onclick="backToHome()">HOME</button>
+                </div>
+            </div>
+            <div id="gameWonScreen">
+                <div class="gameEndButtons">
+                    <button class="restartGameButton" onclick="playGame()">RESTART</button>
+                    <button class="backHomeButton" onclick="backToHome()">HOME</button>
+                </div>
+            </div>
+            
+            <div id="infoDiv" style="display: flex;">
+                <p> A - Move Left </p>
+                <p> D - Move Right </p>
+                <p> Space - Jump </p>
+                <p> F - Throw Bottle </p>
+            </div>
+        </div>
+        <div class="buttons">
+            <img id="volumeIcon" onclick="toggleSound()" src="./img/10_extras/volume_off.png">
+            <img id="infoIcon" onclick="toggleInfoDiv()" src="./img/10_extras/info.png">
+            <a id="privacyPolicyLink" href="./html/imprint-privacy-policy.html" target="_blank">
+                <img src="./img/10_extras/policy.png"></a>
+            <img id="fullScreenIcon" onclick="toggleFullScreen()" src="./img/10_extras/fullscreen.png">
+        </div>
+    <div id="rotateDeviceOverlay">
+        <img id="rotateIcon" src="./img/10_extras/rotate.png">
+        <p>Please rotate device</p>
+    </div>
 </body>
 </html>

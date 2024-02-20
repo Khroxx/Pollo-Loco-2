@@ -1,12 +1,273 @@
-body{
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(img/5_background/layers/air.png);
-    background-size: cover;
+    background-image: url(img/10_extras/body_background.jpg);
     background-repeat: no-repeat;
-    
+    background-size: cover;
+    font-family: 'lone_wolf';
+    margin: 0;
+    height: 100vh;
 }
-canvas{
+
+
+@font-face {
+    font-family: 'lone_wolf';
+    src: url(font/no_club_lone_wolf.ttf);
+}
+
+h1 {
+    font-size: 64px;
+    letter-spacing: 3px;
+    text-shadow: 4px 3px 5px rgb(89 81 81 / 83%);
+    display: block;
+    font-size: 90px;
+}
+
+canvas {
     background-color: black;
+    display: none;
+    border-radius: 10px;
+    border: 1px solid #5f5c5c;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+
+.fullscreen {
+    width: 100% !important;
+    height: 100vh !important;
+    background-size: contain !important;
+    background-position: center !important;
+
+}
+
+#startScreen {
+    height: 720px;
+    width: 1280px;
+    background-image: url(./img/9_intro_outro_screens/start/startscreen_1.png);
+    background-size: 1280px 720px;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #5f5c5c;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+#startGameButton {
+    font-family: 'lone_wolf';
+    margin-top: 20px;
+    /* height: 60px; */
+    width: 300px;
+    background-color: #ea9800;
+    border: 1px solid black;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: black;
+    font-size: 60px;
+    justify-content: center;
+}
+
+#startGameButton:hover,
+.gameLostButtons button:hover {
+    background-color: #DAA520;
+}
+
+#startGameButton:active,
+.gameLostButtons button:active {
+    background-color: #B8860B;
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+#loadingScreen {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+
+.loading-spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid #e2c233;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.gameScreen {
+    position: relative;
+}
+
+.buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(123, 180, 221, 0.3);
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid black;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buttons img {
+    height: 30px;
+    width: 30px;
+}
+
+.buttons img:hover {
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(90%) sepia(16%) saturate(6526%) hue-rotate(359deg) brightness(92%) contrast(103%);
+}
+
+#privacyPolicyLink{
+    display: flex;
+}
+
+#infoDiv {
+    display: none;
+    width: 1240px;
+    z-index: 1;
+    background-color: rgba(242, 143, 63, 1);
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+}
+
+#infoDiv p {
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#rotateDeviceOverlay {
+    display: none;
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(241, 240, 240, 0.85);
+    color: black;
+    font-size: 24px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#rotateDeviceOverlay p{
+    font-size: 40px;
+}
+
+#rotateIcon{
+    height: 300px;
+    width: 500px;
+}
+
+#gameLostScreen{
+    position: absolute;
+    background-image: url(./img/9_intro_outro_screens/game_over/you\ lost.png);
+    background-position: center;
+    background-size: cover;
+    height: 720px;
+    width: 1280px;
+    /* width: 100%; 
+    height: 100%; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    z-index: 2;
+    display: none;
+    justify-content: center;
+    align-items: end;
+}
+
+#gameWonScreen{
+    position: absolute;
+    background-image: url(./img/9_intro_outro_screens/game_over/game\ over.png);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    z-index: 2;
+    display: none;
+    justify-content: center;
+    align-items: end;
+}
+
+.gameEndButtons{
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 50px;
+}
+
+.gameEndButtons button{
+    background-color: #EAC100;
+    border: 1px solid black;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: black;
+    font-size: 36px;
+    font-family: 'lone_wolf';
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
