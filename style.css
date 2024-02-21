@@ -152,7 +152,7 @@ canvas {
     display: flex;
 }
 
-#infoDiv {
+#movementButtons {
     display: none;
     width: 1240px;
     z-index: 1;
@@ -167,7 +167,7 @@ canvas {
     gap: 100px;
 }
 
-#infoDiv p {
+#movementButtons p {
     margin: 0;
     margin-bottom: 10px;
     margin-top: 10px;

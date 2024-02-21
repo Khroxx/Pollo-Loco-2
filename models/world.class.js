@@ -38,24 +38,17 @@ class World {
   
     resetLevel() {
       this.level.bottles = [];
-  
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 10; i++) {
         this.level.bottles.push(new Bottle());
       }
-  
       this.level.coins = [];
-  
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < 5; i++) {
         this.level.coins.push(new Coin());
       }
-  
-      // this.level.enemies = [endboss];
-  
       for (let i = 0; i < 5; i++) {
         this.level.enemies.push(new Chicken());
       }
-  
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 5; i++) {
         this.level.enemies.push(new ChickenSmall());
       }
     }
@@ -86,7 +79,6 @@ class World {
     }
   
     gameLost() {
-      this.endboss.deathAnimation();
       let lostScreen = document.getElementById("gameLostScreen");
       lostScreen.style.display = "flex";
       this.gameLost_sound.play();
@@ -131,6 +123,7 @@ class World {
             this.characterHealth.setPercentage(this.character.energy);
           } else if (this.character.isAboveGround() &&this.character.speedY < 0 &&(enemy instanceof Chicken || enemy instanceof ChickenSmall)) {
             enemy.die();
+            this.character.speedY = 15;
           }
         }
       });
@@ -158,7 +151,6 @@ class World {
                 this.bossHealth.percentage -= 20;
                 this.bossHealth.setPercentage(this.bossHealth.percentage);
                 this.endboss.endBossHurt();
-                // this.endboss.youWin();
               }
             }
           });
@@ -216,7 +208,7 @@ class World {
       this.addObjectsToMap(this.level.enemies);
       this.addObjectsToMap(this.level.clouds);
       this.addObjectsToMap(this.level.bottles.filter((bottle) => !bottle.removed));
-      this.addObjectsToMap(this.level.coins.filter((bottle) => !bottle.removed));
+      this.addObjectsToMap(this.level.coins.filter((coins) => !coins.removed));
       this.addObjectsToMap(this.throwableObjects);
   
       this.ctx.translate(-this.camera_x, 0);
@@ -246,7 +238,7 @@ class World {
       // frame around the object
       //mo.drawFrame(this.ctx);  
       // frame around the object with offset
-      //mo.drawOffsetFrame(this.ctx);  
+      // mo.drawOffsetFrame(this.ctx);  
 
       if (mo.otherDirection) {
         this.turnRight(mo);

@@ -7,6 +7,7 @@ class MoveableObject extends DrawableObject {
     lastHit = 0;
     character;
     hurt_sound = audio[7];
+    canBeHit = true;
 
   
     applyGravity() {
@@ -41,10 +42,10 @@ class MoveableObject extends DrawableObject {
         let moTop = mo.y + offsetTop;
         let moBottom = mo.y + mo.height - offsetBottom;
     
-        let thisLeft = this.x + offsetLeft;
-        let thisRight = this.x + this.width - offsetRight;
-        let thisTop = this.y + offsetTop;
-        let thisBottom = this.y + this.height - offsetBottom;
+        let thisLeft = this.x + this.offsetLeft;
+        let thisRight = this.x + this.width - this.offsetRight;
+        let thisTop = this.y + this.offsetTop;
+        let thisBottom = this.y + this.height - this.offsetBottom;
     
         return thisRight > moLeft &&
                thisBottom > moTop &&
@@ -53,7 +54,8 @@ class MoveableObject extends DrawableObject {
       }
     }
 
-    
+   
+
     hit() {
       this.energy -= 1;
       if (this.energy > 0) {
@@ -97,5 +99,4 @@ class MoveableObject extends DrawableObject {
       this.speedY = 30;
     }
 
-    
   }

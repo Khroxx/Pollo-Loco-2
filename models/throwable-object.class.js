@@ -1,7 +1,7 @@
 class ThrowableObject extends MoveableObject {
     bottlesAmount;
     throwInterval;
-    BossCollision = false;
+    // BossCollision = false;
     bottleSplash_sound = audio[4];
   
     IMAGES_BOTTLE_ROTATION = [

@@ -10,11 +10,13 @@ async function showGame() {
 
 function loadGame() {
     toggleSound();
-    toggleInfoDiv();
+    // togglemovementButtons();
     let startButton = document.getElementById("startGameButton");
     let loadingScreen = document.getElementById("loadingScreen");
     let startScreen = document.getElementById("startScreen");
+    let movementButtons = document.getElementById('movementButtons');
 
+    movementButtons.style.display = 'none';
     startScreen.style.display = "none";
     startButton.style.display = "none";
     loadingScreen.style.display = "none";
@@ -36,21 +38,21 @@ function backToHome(){
     startScreen.style.display = "flex";
 }
 
-function toggleInfoDiv() {
-    let infoDiv = document.getElementById('infoDiv');
-    if (infoDiv.style.display === 'none') {
-        infoDiv.style.display = 'flex';
+function togglemovementButtons() {
+    let movementButtons = document.getElementById('movementButtons');
+    if (movementButtons.style.display === 'none') {
+      movementButtons.style.display = 'flex';
         document.addEventListener('click', closeInfoDivOutside);
-    } else if(infoDiv.style.display === 'flex') {
-        infoDiv.style.display = 'none';
+    } else if(movementButtons.style.display === 'flex') {
+      movementButtons.style.display = 'none';
     }
 }
   
 function closeInfoDivOutside(event) {
-    let infoDiv = document.getElementById('infoDiv');
+    let movementButtons = document.getElementById('movementButtons');
     let infoIcon = document.getElementById('infoIcon');
-    if (event.target !== infoDiv && event.target !== infoIcon && !infoDiv.contains(event.target)) {
-        infoDiv.style.display = 'none';
+    if (event.target !== movementButtons && event.target !== infoIcon && !movementButtons.contains(event.target)) {
+      movementButtons.style.display = 'none';
         document.removeEventListener('click', closeInfoDivOutside);
     }
 }

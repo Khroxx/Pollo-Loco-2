@@ -88,112 +88,102 @@ class Character extends MoveableObject {
       this.applyGravity();
       this.animate(); 
     }
-  
+
 
     animate() {
-      const currentTime = new Date().getTime();
-
-        this.moveInterval = setInterval(() => {
-        this.running_sound.pause();
-        if(this.world.keyboard.RIGHT && this.x < 4800){
-          this.isMoving = true;
-          this.moveRight();
-          this.timer = currentTime;
-          if(this.world.camera_x > -3720 || this.world.camera_x < -4800){
-            this.world.camera_x = -this.x + 100;
-          }
-        } 
-        else if(this.world.keyboard.LEFT && this.x > 100){
-          this.isMoving = true;
-          this.moveLeft();
-          this.timer = currentTime;
-          this.otherDirection = true;
-          if(this.world.camera_x > -3720 || this.x < 3720){
-            this.world.camera_x = -this.x + 100;
-          }
-        } 
-        else {
-          this.isMoving = false; 
-          if (this.world.camera_x > -3720 || this.x < 3720){
-            this.world.camera_x = -this.x + 100;
-          }
-          else {
-            // do nothing
-          }
-        }
-        if (this.world.keyboard.JUMP && !this.isAboveGround()) {
-          this.jump();
-          this.jumping_sound.volume = 0.5;
-          this.jumping_sound.play();
-          this.timer = currentTime;
-        }
-        if (world.endboss.endBossEnergy === 0) {
-          this.stopAnimating();
-          this.running_sound.pause();
-          this.isMoving = false;
-          audio[8].pause();
-          // world.endboss.death();
-        }
-        
+      setInterval(() =>{
+          this.movement();
       }, 1000 / 60);
-  
-      this.characterStateInterval = setInterval(() => {
-        
-        const timeSinceLastKeyPress = (currentTime - this.timer) / 1000;
-    
-        if (this.energy <= 0) {
-          this.deathAnimation();
-          // this.playAnimation(this.IMAGES_DEAD);
-          // setTimeout(() => {
-          //   this.img = new Image();
-          //   this.y = -100;
-          // }, 80);
-          // this.stopAnimating();
-          this.world.gameLost();
-        } else if (this.isHurt()) {
-          this.playAnimation(this.IMAGES_HURT);
-        } else if (this.isAboveGround()) {
-          this.playAnimation(this.IMAGES_JUMPING);
-        } else if (this.isMoving) {
-          this.playAnimation(this.IMAGES_WALKING);
-        } else if (timeSinceLastKeyPress > 10 && timeSinceLastKeyPress < 18){
-            this.playAnimation(this.IMAGES_IDLE_LONG);
-        } else if (timeSinceLastKeyPress <= 10){
-          this.playAnimation(this.IMAGES_IDLE);
-        }    
+      setInterval(() =>{    
+          this.characterAnimation();
       }, 100);
+    }
+
+    movement() {
+      this.running_sound.volume = 0.5;
+      this.running_sound.play();
+      this.movementLeft();
+      this.movementRight();
+      this.jumpMovement();
+    }
+
+
+
+    movementRight() {
+      if(this.world.keyboard.RIGHT && this.x < 4800){
+        this.isMoving = true;
+        this.moveRight();
+        this.timer = new Date().getTime();
+        if(this.world.camera_x > -3720 || this.world.camera_x < -4800){
+          this.world.camera_x = -this.x + 100;
+        }
+      } else {
+        this.isMoving = false; 
+      }
+    }
+  
+    
+    movementLeft() {
+      if(this.world.keyboard.LEFT && this.x > 100){
+        this.isMoving = true;
+        this.moveLeft();
+        this.timer = new Date().getTime();
+        this.otherDirection = true;
+        if(this.world.camera_x > -3720 || this.x < 3720){
+          this.world.camera_x = -this.x + 100;
+        }
+      } else {
+            this.isMoving = false;
+      }
+    }
+    
+    jumpMovement() {
+      if (this.world.keyboard.JUMP && !this.isAboveGround()) {
+        this.jump();
+        this.jumping_sound.volume = 0.5;
+        this.jumping_sound.play();
+        this.timer = new Date().getTime();
+      }
+    }
+
+    characterAnimation() {
+      if (this.isDead()) {
+        this.deathAnimation();
+      } else if (this.isHurt()) {
+        this.playAnimation(this.IMAGES_HURT);
+      } else if (this.isAboveGround()) {
+        this.playAnimation(this.IMAGES_JUMPING);
+      } else if (this.isMoving) {
+        this.playAnimation(this.IMAGES_WALKING);
+      } else {
+        this.idleAnimation();
+      }
     }
 
 
     deathAnimation() {
-      let animationIndex = 0;
-      const playDeathAnimation = () => {
-        if (animationIndex < this.IMAGES_DEAD.length) {
-          this.playAnimation([this.IMAGES_DEAD[animationIndex]]);
-          animationIndex++;
-          setTimeout(playDeathAnimation, 100);
-        } else {
-          this.playAnimation([this.IMAGES_DEAD[this.IMAGES_DEAD.length - 1]]);
-        }
-      };
-      playDeathAnimation();
+      this.playAnimation(this.IMAGES_DEAD);
+      setTimeout(() => {
+        this.clearAllIntervals();
+        this.running_sound.pause();
+        this.endScreen.style.display = "flex";
+        this.world.gameLost_sound.play();
+        this.world.gameLost_sound.volume = 0.3;
+
+        let path = this.IMAGES_DEAD[0];
+        this.img = this.imageCache[path];
+      }, 1000);
     }
 
-    // playdeathAnimation() {
-      // let animationIndex = 0;
-      // this.deadAnimation = setInterval(() => {
-      //   if (animationIndex < this.IMAGES_DEAD.length - 1) {
-      //     this.playAnimation([this.IMAGES_DEAD[animationIndex]]);
-      //     animationIndex++;
-      //   } else {
-          // this.playAnimation([this.IMAGES_DEAD[6]]);
-        // }
-      // }, 100);
-    // }
-  
-    stopAnimating() {
-      clearInterval(this.moveInterval);
-      clearInterval(this.characterStateInterval);
+
+    idleAnimation() {
+      const currentTime = new Date().getTime();
+      const timeSinceLastKeyPress = (currentTime - this.timer) / 1000;
+      if (timeSinceLastKeyPress > 20 && timeSinceLastKeyPress < 18){
+        this.playAnimation(this.IMAGES_IDLE_LONG);
+      } else if (timeSinceLastKeyPress <= 10){
+        this.playAnimation(this.IMAGES_IDLE);
+      }    
     }
   
     resetCharacterEnergy() {
