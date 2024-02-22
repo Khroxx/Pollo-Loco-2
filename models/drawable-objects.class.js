@@ -42,7 +42,7 @@ class DrawableObject {
 
 
     drawOffsetFrame(ctx) {
-      if (this instanceof Character || this instanceof ChickenSmall || this instanceof Bottle || this instanceof Coin) {
+      if (this instanceof Character || this instanceof ChickenSmall || this instanceof Endboss || this instanceof ThrowableObject) {
         let offsetTop, offsetBottom, offsetLeft, offsetRight;
         if (this instanceof Character) {
           offsetTop = 130;

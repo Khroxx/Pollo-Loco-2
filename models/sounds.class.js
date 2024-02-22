@@ -18,19 +18,19 @@ let audio = [
     muteSound();
   }
   
+
   function toggleSound() {
-    let volumeIcon = document.getElementById("volumeIcon");
   
     if (sound) {
-        volumeIcon.src = "/img/10_extras/volume_off.png";
         muteSound();
     } else {
-        volumeIcon.src = "/img/10_extras/volume.png";
         unmuteSound();
     }
   }
   
   function muteSound() {
+    let volumeIcon = document.getElementById("volumeIcon");
+    volumeIcon.src = "/img/10_extras/volume_off.png";
     audio.forEach(sound => {
         sound.muted = true;
         sound.pause();
@@ -39,6 +39,8 @@ let audio = [
   }
   
   function unmuteSound() {
+    let volumeIcon = document.getElementById("volumeIcon");
+    volumeIcon.src = "/img/10_extras/volume.png";
     audio.forEach(sound => {
         sound.muted = false;
     });

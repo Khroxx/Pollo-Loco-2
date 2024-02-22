@@ -3,6 +3,11 @@ class ThrowableObject extends MoveableObject {
     throwInterval;
     // BossCollision = false;
     bottleSplash_sound = audio[4];
+    offsetTop = 0;
+    offsetBottom = 0;
+    offsetLeft = 0;
+    offsetRight = 0;
+    
   
     IMAGES_BOTTLE_ROTATION = [
       "img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png",
@@ -34,7 +39,7 @@ class ThrowableObject extends MoveableObject {
     }
   
     throw() {
-      this.speedY = 30;
+      this.speedY = 15;
   
       this.throwInterval = setInterval(() => {
         if (this.y >= 540) {
@@ -44,7 +49,7 @@ class ThrowableObject extends MoveableObject {
         } else {
           this.loadImages(this.IMAGES_BOTTLE_ROTATION);
           this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
-          this.x += 20;
+          this.x += 40;
         }
       }, 80);
   

@@ -9,8 +9,7 @@ async function showGame() {
 }
 
 function loadGame() {
-    toggleSound();
-    // togglemovementButtons();
+    playBackgroundSound();
     let startButton = document.getElementById("startGameButton");
     let loadingScreen = document.getElementById("loadingScreen");
     let startScreen = document.getElementById("startScreen");
@@ -42,18 +41,18 @@ function togglemovementButtons() {
     let movementButtons = document.getElementById('movementButtons');
     if (movementButtons.style.display === 'none') {
       movementButtons.style.display = 'flex';
-        document.addEventListener('click', closeInfoDivOutside);
+        document.addEventListener('click', closeMovementButtonsOutside);
     } else if(movementButtons.style.display === 'flex') {
       movementButtons.style.display = 'none';
     }
 }
   
-function closeInfoDivOutside(event) {
+function closeMovementButtonsOutside(event) {
     let movementButtons = document.getElementById('movementButtons');
     let infoIcon = document.getElementById('infoIcon');
     if (event.target !== movementButtons && event.target !== infoIcon && !movementButtons.contains(event.target)) {
       movementButtons.style.display = 'none';
-        document.removeEventListener('click', closeInfoDivOutside);
+        document.removeEventListener('click', closeMovementButtonsOutside);
     }
 }
   
@@ -91,6 +90,10 @@ function toggleFullScreen() {
     exitFullScreen()
   }
 }
+
+
+
+
 
 document.addEventListener('fullscreenchange', function() {
   let gameLostScreen = document.getElementById('gameLostScreen');

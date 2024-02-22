@@ -8,6 +8,7 @@ body {
     font-family: 'lone_wolf';
     margin: 0;
     height: 100vh;
+    overflow: hidden;
 }
 
 
@@ -25,6 +26,8 @@ h1 {
 }
 
 canvas {
+    height: 720px;
+    width: 1280px;
     background-color: black;
     display: none;
     border-radius: 10px;

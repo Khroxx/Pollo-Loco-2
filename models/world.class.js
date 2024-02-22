@@ -37,28 +37,46 @@ class World {
     }
   
     resetLevel() {
+      
       this.level.bottles = [];
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 7; i++) {
         this.level.bottles.push(new Bottle());
       }
+
       this.level.coins = [];
       for (let i = 0; i < 5; i++) {
         this.level.coins.push(new Coin());
       }
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 3; i++) {
         this.level.enemies.push(new Chicken());
       }
-      for (let i = 0; i < 5; i++) {
+      this.level.enemies.push(new Endboss());
+      for (let i = 0; i < 3; i++) {
         this.level.enemies.push(new ChickenSmall());
       }
+    
     }
   
     restartGame() {
+
       this.resetEnergies();
       this.resetLevel();
       this.run();
       this.gameWon_sound.pause();
       this.gameLost_sound.pause();
+    }
+
+    testfunc(){
+      // this.clearCanvas(this.canvas);
+      this.draw();
+      this.level.initLevel();
+      this.setWorld();
+      
+    }
+
+    clearCanvas(canvas) {
+      const context = canvas.getContext('2d');
+      context.clearRect(0, 0, canvas.width, canvas.height);
     }
   
     resetEnergies() {
@@ -136,7 +154,7 @@ class World {
         }
       });
     }
-  
+
     checkCollisionsWithThrowables() {
       this.throwableObjects.forEach((throwableObject) => {
         if (!throwableObject.collidedWithEndBoss) {
@@ -144,19 +162,54 @@ class World {
             if (throwableObject.isColliding(enemy)) {
               throwableObject.collidedWithEndBoss = true;
               throwableObject.splashBottle();
-              setTimeout(() => {
-                this.removeThrowableObject(throwableObject);
-              }, 200);
-              if (enemy instanceof Endboss) {
-                this.bossHealth.percentage -= 20;
-                this.bossHealth.setPercentage(this.bossHealth.percentage);
-                this.endboss.endBossHurt();
-              }
+              this.handleChickenCollision(throwableObject, enemy);
+              this.handleEndbossCollision(throwableObject, enemy);
             }
           });
         }
       });
     }
+
+    handleChickenCollision(throwableObject, enemy) {
+      if(enemy instanceof Chicken || enemy instanceof ChickenSmall) {
+        enemy.die();
+      }
+      setTimeout(() => {
+        this.removeThrowableObject(throwableObject);
+      }, 200);
+    }
+
+    handleEndbossCollision(throwableObject, enemy) {
+      if (enemy instanceof Endboss) {
+        this.bossHealth.percentage -= 20;
+        this.bossHealth.setPercentage(this.bossHealth.percentage);
+        this.endboss.endBossHurt();
+      }
+    }
+  
+    // checkCollisionsWithThrowables() {
+    //   this.throwableObjects.forEach((throwableObject) => {
+    //     if (!throwableObject.collidedWithEndBoss) {
+    //       this.level.enemies.forEach((enemy) => {
+    //         if (throwableObject.isColliding(enemy)) {
+    //           throwableObject.collidedWithEndBoss = true;
+    //           throwableObject.splashBottle();
+    //           if(enemy instanceof Chicken || enemy instanceof ChickenSmall) {
+    //             enemy.die();
+    //           }
+    //           setTimeout(() => {
+    //             this.removeThrowableObject(throwableObject);
+    //           }, 200);
+    //           if (enemy instanceof Endboss) {
+    //             this.bossHealth.percentage -= 20;
+    //             this.bossHealth.setPercentage(this.bossHealth.percentage);
+    //             this.endboss.endBossHurt();
+    //           }
+    //         }
+    //       });
+    //     }
+    //   });
+    // }
   
     checkCollisionsWithCoins() {
       this.level.coins.forEach((coin) => {
@@ -222,6 +275,9 @@ class World {
         self.draw();
       });
     }
+    
+
+  
   
     addObjectsToMap(objects) {
       objects.forEach((o) => {

@@ -1,18 +1,59 @@
 @media only screen and (max-width: 1300px) {
     canvas {
-        width: 100%;
+        height: 480px;
+        width: 852px;
         border-radius: 0;
+    }
+    #loadingScreen {
+        height: 480px;
+        width: 852px;
     }
     #movementButtons{
-        width: 100%;
+        width: 822px;
         border-radius: 0;
-        /* gap: 5%; */
+        padding: 0;
+        padding-left: 30px;
+    }
+    #gameScreen{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 852px;
+    }
+    #gameWonScreen{
+        width: 852px;
+        height: 480px;
+    }
+    #gameLostScreen{
+        width: 852px;
+        height: 480px;
+    }
+    .gameEndButtons button{
+        font-size: 24px;
+    }
+    #startScreen {
+        width: 100%;
+        height: 480px;
+        background-size: 100% 100%;
+
+    }
+    #startGameButton {
+       font-size: 24px;
+       width: 150px;
+       margin-top: 2px;
+    }
+}
+@media only screen and (max-width: 852px) {
+    #rotateDeviceOverlay {
+        display: flex;
+    }
+    #movementButtons {
+        display: none !important;
+    }
+    #headline{
+        font-size: 60px;
     }
 
-    #startScreen {
-        width: 100vw;
-        background-size: 100% 100%;
-    }
 }
 
 @media only screen and (max-width: 530px) {

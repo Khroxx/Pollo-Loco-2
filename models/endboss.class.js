@@ -83,6 +83,7 @@ class Endboss extends MoveableObject {
     bossAnimation() {
       if (world.bossHealth.percentage === 0) {
         this.deathAnimation();
+        this.speed = 0;
       } else if (this.alertDistance() && !this.isDead()) {
         this.alertMode();
       } else if (this.attackDistance() && !this.isDead()) {
@@ -192,6 +193,7 @@ class Endboss extends MoveableObject {
 
   reset() {
       this.endBossEnergy = 100;
+      this.energy = 100;
   }
     
 }

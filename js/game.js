@@ -2,12 +2,12 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let showFullScreen = true;
-background_sound = audio[8];
 
 async function playGame() {
   showGame();
-  audio[9].pause();
-  audio[10].pause();
+  audio[9].pause(); // win sound
+  audio[10].pause(); // lost sound
+  muteSound();
   initLevel();
   setTimeout(function() {
     startGame();
@@ -15,17 +15,30 @@ async function playGame() {
 }
 
 function startGame(){
+  unmuteSound();
   loadGame();
   let canvas = document.getElementById("canvas");
   canvas.style.display = "block";
   world = new World(canvas, keyboard);
-  background_sound.volume = 0.2;
-  background_sound.play();
-  background_sound.loop = true;
 
   if (world) {
     world.restartGame();
   }
+}
+
+function restartTheGame() {
+  
+  if (world) {
+    world.restartGame();
+    world.run();
+  }
+}
+
+function playBackgroundSound() {
+  let background_sound = audio[8];
+  background_sound.volume = 0.2;
+  background_sound.play();
+  background_sound.loop = true;
 }
 
 
