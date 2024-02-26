@@ -19,8 +19,9 @@ function startGame(){
   loadGame();
   let canvas = document.getElementById("canvas");
   canvas.style.display = "block";
+
   world = new World(canvas, keyboard);
-  
+  // world.run();
   if (world) {
     world.restartGame();
   }

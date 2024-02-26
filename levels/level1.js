@@ -1,6 +1,10 @@
-// let endboss = new Endboss();
 let level1;
 initLevel();
+
+/**
+ * Initializes the first level of the game.
+ * empty functions will get filled when starting/restarting the game.
+ */
 function initLevel(){
   level1 = new Level(
     createBackground(),
@@ -11,6 +15,10 @@ function initLevel(){
   );
 }
 
+/**
+ * Creates the background objects for the level.
+ * @returns {BackgroundObject[]} An array of background objects.
+ */
 function createBackground(){  
   return [
     new BackgroundObject("img/5_background/layers/air.png", -1279),
@@ -38,54 +46,43 @@ function createBackground(){
   ];
 }
 
+/**
+ * Creates the enemies for the level.
+ * @returns {Enemy[]} An array of enemy objects.
+ */
 function createEnemies(){
-  return [
-  //  new Chicken(), 
-  //  new Chicken(), 
-  //  new Chicken(),
-  //  new Chicken(), 
-  //  new Chicken(), hinzufügen wenn Spiel zum Abgeben
-  //  new ChickenSmall(),
-  //  new ChickenSmall(),
-  //  new ChickenSmall(),
-  //  new ChickenSmall(),
-  //  new ChickenSmall(),
-  ],
-
-  [
-    // new Endboss()
-  ];
+  return []
 }
 
+
+/**
+ * Creates the clouds for the level.
+ * @returns {Cloud[]} An array of cloud objects.
+ */
 function createClouds() {
   return [
-    // new Cloud(),
+    new Cloud(),
     new Cloud(),
     new Cloud(),
     new Cloud(),
   ];
 }
 
+
+/**
+ * Creates the bottles for the level.
+ * @returns {Bottle[]} An array of bottle objects.
+ */
 function createBottles() {
-  return [
-    // new Bottle(),
-    // new Bottle(),
-    // new Bottle(),
-    // new Bottle(),
-    // new Bottle(),
-    // new Bottle(),
-    // new Bottle(),
-  ];
+  return [];
 }
 
+/**
+ * Creates the coins for the level.
+ * @returns {Coin[]} An array of coin objects.
+ */
 function createCoins() {
-  return [
-  // new Coin(),
-  // new Coin(),
-  // new Coin(),
-  // new Coin(),
-  // new Coin(),
-];
+  return [];
 }
 
 

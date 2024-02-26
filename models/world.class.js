@@ -178,30 +178,7 @@ class World {
         }, 200);
       }
     }
-  
-    // checkCollisionsWithThrowables() {
-    //   this.throwableObjects.forEach((throwableObject) => {
-    //     if (!throwableObject.collidedWithEndBoss) {
-    //       this.level.enemies.forEach((enemy) => {
-    //         if (throwableObject.isColliding(enemy)) {
-    //           throwableObject.collidedWithEndBoss = true;
-    //           throwableObject.splashBottle();
-    //           if(enemy instanceof Chicken || enemy instanceof ChickenSmall) {
-    //             enemy.die();
-    //           }
-    //           setTimeout(() => {
-    //             this.removeThrowableObject(throwableObject);
-    //           }, 200);
-    //           if (enemy instanceof Endboss) {
-    //             this.bossHealth.percentage -= 20;
-    //             this.bossHealth.setPercentage(this.bossHealth.percentage);
-    //             this.endboss.endBossHurt();
-    //           }
-    //         }
-    //       });
-    //     }
-    //   });
-    // }
+
   
     checkCollisionsWithCoins() {
       this.level.coins.forEach((coin) => {
@@ -286,7 +263,7 @@ class World {
       // frame around the object
       //mo.drawFrame(this.ctx);  
       // frame around the object with offset
-      // mo.drawOffsetFrame(this.ctx);  
+      mo.drawOffsetFrame(this.ctx);  
 
       if (mo.otherDirection) {
         this.turnRight(mo);
