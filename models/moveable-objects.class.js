@@ -46,16 +46,10 @@ class MoveableObject extends DrawableObject {
    */
   isColliding(mo) {
     if (mo && mo.x !== undefined && mo.y !== undefined) {
-      // let offsetTop = mo.offsetTop || 0;
-      // let offsetBottom = mo.offsetBottom || 0;
-      // let offsetLeft = mo.offsetLeft || 0;
-      // let offsetRight = mo.offsetRight || 0;
-
       let moLeft = mo.x + mo.offsetLeft;
       let moRight = mo.x + mo.width - mo.offsetRight;
       let moTop = mo.y + mo.offsetTop;
       let moBottom = mo.y + mo.height - mo.offsetBottom;
-
       let thisLeft = this.x + this.offsetLeft;
       let thisRight = this.x + this.width - this.offsetRight;
       let thisTop = this.y + this.offsetTop;

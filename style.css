@@ -246,7 +246,7 @@ canvas {
 }
 
 .gameEndButtons button{
-    background-color: #EAC100;
+    background-color: rgba(242, 143, 63, 1);
     border: 1px solid black;
     color: white;
     padding: 10px 20px;
@@ -260,7 +260,6 @@ canvas {
     color: black;
     font-size: 36px;
     font-family: 'lone_wolf';
-    animation: heartbeat 1.5s infinite;
 }
 
 .mobileButtons{
@@ -269,9 +268,15 @@ canvas {
     justify-content: space-between;
     top: -65px;
     width: 100%;
-    padding-left: 100px;
-    padding-right: 100px;
+    /* padding-left: 100px;
+    padding-right: 100px; */
 
+}
+.mobileBtnContainer{
+    display: flex;
+    gap: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #btnLeft, #btnRight, #btnJump, #btnThrow {
@@ -286,23 +291,13 @@ canvas {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     font-size: 30px;
-    /* font-family: 'lone_wolf'; */
     height: 60px;
     width: 60px;
 }
-#btnJump img, #btnThrow img{
-    height: 30px;
-    width: 30px;
-}
 
-@keyframes heartbeat {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
+#btnJump img, #btnThrow img{
+    height: 40px;
+    width: 40px;
+    position: relative;
+    left: 6px;
 }

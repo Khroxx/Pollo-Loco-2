@@ -81,7 +81,7 @@ class Endboss extends MoveableObject {
    * Controls the boss animation based on the current state of the boss.
    */
   bossAnimation() {
-    if (world.endboss.isBossHurt()) {
+    if (world.endboss.isBossHurt() && !world.bossHealth.percentage === 0) {
       this.playAnimation(this.ENDBOSS_HURT);
     } else if (world.bossHealth.percentage === 0) {
       this.deathAnimation();

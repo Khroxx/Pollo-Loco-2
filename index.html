@@ -28,8 +28,10 @@
     <script src="/models/level.class.js"></script>
     <script src="/levels/level1.js"></script>
     <script src="/js/game.js"></script>
-    
-    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/10_extras/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/10_extras/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/10_extras/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/10_extras/favicon/site.webmanifest">
 
 </head>
 <body>
@@ -55,11 +57,11 @@
                 </div>
             </div>
             <div class="mobileButtons">
-                <div>
+                <div class="mobileBtnContainer">
                     <button id="btnLeft"><</button>
                     <button id="btnRight">></button>    
                 </div>
-                <div>
+                <div class="mobileBtnContainer">
                     <button id="btnJump"><img src="/img/10_extras/jump.png" alt=""></button>
                     <button id="btnThrow"><img src="/img/10_extras/throw.png" alt=""></button>
                 </div>
@@ -74,7 +76,7 @@
             <div class="buttons">
                 <img id="volumeIcon" onclick="toggleSound()" src="./img/10_extras/volume_off.png">
                 <img id="infoIcon" onclick="togglemovementButtons()" src="./img/10_extras/info.png">
-                <a id="privacyPolicyLink" href="./html/imprint-privacy-policy.html" target="_blank">
+                <a id="privacyPolicyLink" href="privacy_policy.html" target="_blank">
                     <img src="./img/10_extras/policy.png"></a>
                 <img id="fullScreenIcon" onclick="toggleFullScreen()" src="./img/10_extras/fullscreen.png">
             </div>

@@ -1,3 +1,6 @@
+/**
+ * Displays the loading screen and hides the game lost and won screens.
+ */
 async function showGame() {
     let loadingScreen = document.getElementById("loadingScreen");
     let gameLostScreen = document.getElementById("gameLostScreen");
@@ -8,6 +11,9 @@ async function showGame() {
     loadingScreen.style.display = "flex";
 }
 
+/**
+ * Starts the background sound and hides the start button, start screen, loading screen, and movement buttons.
+ */
 function loadGame() {
     playBackgroundSound();
     let startButton = document.getElementById("startGameButton");
@@ -23,6 +29,9 @@ function loadGame() {
 }
 
 
+/**
+ * Hides the game lost screen, game won screen, and canvas, and displays the start button and start screen.
+ */
 function backToHome(){
     let lostScreen = document.getElementById("gameLostScreen");
     let canvas = document.getElementById("canvas");
@@ -37,6 +46,9 @@ function backToHome(){
     startScreen.style.display = "flex";
 }
 
+/**
+ * Toggles the display of the movement buttons.
+ */
 function togglemovementButtons() {
     let movementButtons = document.getElementById('movementButtons');
     if (movementButtons.style.display === 'none') {
@@ -47,6 +59,10 @@ function togglemovementButtons() {
     }
 }
   
+/**
+ * Hides the movement buttons when a click is detected outside of the movement buttons and the info icon.
+ * @param {Event} event - The event object.
+ */
 function closeMovementButtonsOutside(event) {
     let movementButtons = document.getElementById('movementButtons');
     let infoIcon = document.getElementById('infoIcon');
@@ -57,7 +73,10 @@ function closeMovementButtonsOutside(event) {
 }
   
 
-
+/**
+ * Requests full screen mode for the game screen.
+ * @param {HTMLElement} gamescreen - The game screen element.
+ */
 function requestFullScreen(gamescreen) {
   if (gamescreen.requestFullscreen) {
     gamescreen.requestFullscreen();
@@ -70,6 +89,10 @@ function requestFullScreen(gamescreen) {
   }
 }
 
+
+/**
+ * Exits full screen mode.
+ */
 function exitFullScreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
@@ -82,6 +105,10 @@ function exitFullScreen() {
   }
 }
 
+
+/**
+ * Toggles full screen mode for the game screen.
+ */
 function toggleFullScreen() {
   let gamescreen = document.getElementById('gameScreen');
   if (!document.fullscreenElement) {
@@ -90,8 +117,6 @@ function toggleFullScreen() {
     exitFullScreen()
   }
 }
-
-
 
 
 
