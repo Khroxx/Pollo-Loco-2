@@ -82,7 +82,7 @@ window.addEventListener("keyup", (event) => {
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("btnLeft").addEventListener("touchstart", (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     keyboard.LEFT = true;
   });
   document.getElementById("btnLeft").addEventListener("touchend", (event) => {
