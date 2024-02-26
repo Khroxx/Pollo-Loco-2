@@ -47,7 +47,7 @@ canvas {
 #startScreen {
     height: 720px;
     width: 1280px;
-    background-image: url(./img/9_intro_outro_screens/start/startscreen_1.png);
+    background-image: url(img/9_intro_outro_screens/start/startscreen_1.png);
     background-size: 1280px 720px;
     background-repeat: no-repeat;
     display: flex;
@@ -204,7 +204,7 @@ canvas {
 
 #gameLostScreen{
     position: absolute;
-    background-image: url(./img/9_intro_outro_screens/game_over/you\ lost.png);
+    background-image: url(img/9_intro_outro_screens/game_over/you\ lost.png);
     background-position: center;
     background-size: cover;
     height: 720px;
@@ -223,7 +223,7 @@ canvas {
 
 #gameWonScreen{
     position: absolute;
-    background-image: url(./img/9_intro_outro_screens/game_over/game\ over.png);
+    background-image: url(img/9_intro_outro_screens/game_over/game\ over.png);
     background-position: center;
     background-size: cover;
     width: 100%;

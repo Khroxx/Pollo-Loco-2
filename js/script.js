@@ -49,7 +49,7 @@ function backToHome(){
 /**
  * Toggles the display of the movement buttons.
  */
-function togglemovementButtons() {
+function toggleMovementButtons() {
     let movementButtons = document.getElementById('movementButtons');
     if (movementButtons.style.display === 'none') {
       movementButtons.style.display = 'flex';
