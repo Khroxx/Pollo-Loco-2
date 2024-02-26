@@ -40,20 +40,20 @@ function createBackground(){
 
 function createEnemies(){
   return [
-   new Chicken(), 
-   new Chicken(), 
-   new Chicken(),
+  //  new Chicken(), 
+  //  new Chicken(), 
+  //  new Chicken(),
   //  new Chicken(), 
   //  new Chicken(), hinzufügen wenn Spiel zum Abgeben
-   new ChickenSmall(),
-   new ChickenSmall(),
-   new ChickenSmall(),
+  //  new ChickenSmall(),
+  //  new ChickenSmall(),
+  //  new ChickenSmall(),
   //  new ChickenSmall(),
   //  new ChickenSmall(),
   ],
 
   [
-    new Endboss()
+    // new Endboss()
   ];
 }
 
@@ -68,23 +68,23 @@ function createClouds() {
 
 function createBottles() {
   return [
-    new Bottle(),
-    new Bottle(),
-    new Bottle(),
-    new Bottle(),
-    new Bottle(),
-    new Bottle(),
-    new Bottle(),
+    // new Bottle(),
+    // new Bottle(),
+    // new Bottle(),
+    // new Bottle(),
+    // new Bottle(),
+    // new Bottle(),
+    // new Bottle(),
   ];
 }
 
 function createCoins() {
   return [
-  new Coin(),
-  new Coin(),
-  new Coin(),
-  new Coin(),
-  new Coin(),
+  // new Coin(),
+  // new Coin(),
+  // new Coin(),
+  // new Coin(),
+  // new Coin(),
 ];
 }
 

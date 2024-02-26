@@ -58,31 +58,18 @@ class World {
     }
   
     restartGame() {
-
       this.resetEnergies();
       this.resetLevel();
       this.run();
       this.gameWon_sound.pause();
       this.gameLost_sound.pause();
     }
-
-    testfunc(){
-      // this.clearCanvas(this.canvas);
-      this.draw();
-      this.level.initLevel();
-      this.setWorld();
-      
-    }
-
-    clearCanvas(canvas) {
-      const context = canvas.getContext('2d');
-      context.clearRect(0, 0, canvas.width, canvas.height);
-    }
   
     resetEnergies() {
       this.level.enemies.forEach((enemy) => {
         if (enemy instanceof Endboss) {
           enemy.reset();
+          world.bossHealth.setPercentage(100);
         }
       });
   
@@ -125,7 +112,7 @@ class World {
     }
   
     checkThrowObjects() {
-      if (this.keyboard.THROW && this.collectedBottles > 0 && this.endboss.endBossEnergy > 0) {
+      if (this.keyboard.THROW && this.collectedBottles > 0 && this.endboss.energy > 0) {
         let bottle = new ThrowableObject(this.character.x + 50, this.character.y + 100, this.bottlesAmount);
         this.throwableObjects.push(bottle);
         this.collectedBottles--;
@@ -160,7 +147,7 @@ class World {
         if (!throwableObject.collidedWithEndBoss) {
           this.level.enemies.forEach((enemy) => {
             if (throwableObject.isColliding(enemy)) {
-              throwableObject.collidedWithEndBoss = true;
+              
               throwableObject.splashBottle();
               this.handleChickenCollision(throwableObject, enemy);
               this.handleEndbossCollision(throwableObject, enemy);
@@ -181,9 +168,14 @@ class World {
 
     handleEndbossCollision(throwableObject, enemy) {
       if (enemy instanceof Endboss) {
+        throwableObject.collidedWithEndBoss = true;
         this.bossHealth.percentage -= 20;
         this.bossHealth.setPercentage(this.bossHealth.percentage);
-        this.endboss.endBossHurt();
+        // this.endboss.endBossHurt();
+        this.endboss.bossHit();
+        setTimeout(() => {
+          this.removeThrowableObject(throwableObject);
+        }, 200);
       }
     }
   

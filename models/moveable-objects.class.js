@@ -4,10 +4,13 @@ class MoveableObject extends DrawableObject {
     speedY = 0;
     acceleration = 2.5;
     energy = 100;
+    bossEnergy = 100;
     lastHit = 0;
     character;
     hurt_sound = audio[7];
+    endBoss_hurt_sound = audio[6];
     canBeHit = true;
+    bossLastHit = 0;
 
   
     applyGravity() {
@@ -66,12 +69,33 @@ class MoveableObject extends DrawableObject {
       } else{
         this.lastHit = new Date().getTime();
       }
+  }
+
+    bossHit() {
+      this.bossEnergy -= 20;
+      this.bossLastHit = new Date().getTime();
+      if (this.bossEnergy > 0) {
+        this.endBoss_hurt_sound.volume = 0.1;
+        this.endBoss_hurt_sound.play();
+        
+      } else if (this.bossEnergy <= 0){
+        this.bossEnergy = 0;
+      }
+    }
+
+    isBossHurt(){
+      let timePassed = new Date().getTime() - this.bossLastHit; 
+      let btimePassed = timePassed / 1000;
+      console.log("time since hit: " + btimePassed);
+      return btimePassed < 1;
+      
     }
     
   
     isHurt(){
       let timePassed = new Date().getTime() - this.lastHit; 
       timePassed = timePassed / 1000;
+      // console.log("character hit: " + timePassed);
       return timePassed < 1;
     }
   

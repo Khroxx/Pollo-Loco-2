@@ -7,7 +7,7 @@ class BottlesAmount extends DrawableObject {
         super();
         this.loadImages(this.IMAGE_BOTTLE);
         this.x = 10;
-        this.y = 600;
+        this.y = 50;
         this.width = 130;
         this.height = 130;
         this.otherDirection = false;

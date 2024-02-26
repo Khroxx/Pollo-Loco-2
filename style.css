@@ -263,6 +263,38 @@ canvas {
     animation: heartbeat 1.5s infinite;
 }
 
+.mobileButtons{
+    display: none;
+    position: relative;
+    justify-content: space-between;
+    top: -65px;
+    width: 100%;
+    padding-left: 100px;
+    padding-right: 100px;
+
+}
+
+#btnLeft, #btnRight, #btnJump, #btnThrow {
+    background-color: rgba(242, 143, 63, 1);
+    border: 1px solid black;
+    color: white;
+    padding: 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-size: 30px;
+    /* font-family: 'lone_wolf'; */
+    height: 60px;
+    width: 60px;
+}
+#btnJump img, #btnThrow img{
+    height: 30px;
+    width: 30px;
+}
+
 @keyframes heartbeat {
     0% {
         transform: scale(1);

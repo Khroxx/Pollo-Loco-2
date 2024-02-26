@@ -8,7 +8,7 @@ class CoinsAmount extends DrawableObject {
         super();
         this.loadImages(this.IMAGE_COIN);
         this.x = 120;
-        this.y = 540;
+        this.y = -5;
         this.width = 250;
         this.height = 250;
         this.otherDirection = false;

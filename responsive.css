@@ -63,18 +63,38 @@
 }
 
 @media only screen and (max-width: 530px) and (orientation: landscape) {
-    #rotateDeviceOveray {
+    #rotateDeviceOverlay {
         display: none;
     }
+
+    
+}
+@media only screen and (max-height: 480px) and (orientation: landscape){
+    #movementButtons {
+        display: none !important;
+    }
+    .mobileButtons{
+        position: absolute;
+        bottom: 0;
+        top: 85%;
+    }
+    
 }
 
 @media only screen and (max-height: 720px) {
-
-    canvas,
-    #startScreen {
-        height: 100vh;
+    .mobileButtons{
+        display: flex;
     }
-
+    #movementButtons {
+        position: relative;
+        top: -50px;
+    }
+    #gameScreen {
+        height: 100%;
+    }
+    body{
+        background-size: auto;
+    }
     h1 {
         display: none;
     }

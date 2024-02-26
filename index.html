@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="responsive.css">
     <script src="/js/script.js"></script>
     <script src="/models/sounds.class.js"></script>
+    <script src="/models/keyboard.class.js"></script>
     <script src="/models/world.class.js"></script>
     <script src="/models/drawable-objects.class.js"></script>
     <script src="/models/moveable-objects.class.js"></script>
-    <script src="/models/keyboard.class.js"></script>
     <script src="/models/character-health.class.js"></script>
     <script src="/models/boss-health.class.js"></script>
     <script src="/models/bottle-amount.class.js"></script>
@@ -28,6 +28,7 @@
     <script src="/models/level.class.js"></script>
     <script src="/levels/level1.js"></script>
     <script src="/js/game.js"></script>
+    
     <!-- FAVICON -->
 
 </head>
@@ -43,31 +44,42 @@
             <canvas id="canvas" width="1280" height="720"></canvas>
             <div id="gameLostScreen">
                 <div class="gameEndButtons">
-                    <button class="restartGameButton" onclick="testfunc()">RESTART</button>
+                    <button class="restartGameButton" onclick="playGame()">RESTART</button>
                     <button class="backHomeButton" onclick="backToHome()">HOME</button>
                 </div>
             </div>
             <div id="gameWonScreen">
                 <div class="gameEndButtons">
-                    <button class="restartGameButton" onclick="testfunc()">RESTART</button>
+                    <button class="restartGameButton" onclick="playGame()">RESTART</button>
                     <button class="backHomeButton" onclick="backToHome()">HOME</button>
                 </div>
             </div>
-            
+            <div class="mobileButtons">
+                <div>
+                    <button id="btnLeft"><</button>
+                    <button id="btnRight">></button>    
+                </div>
+                <div>
+                    <button id="btnJump"><img src="/img/10_extras/jump.png" alt=""></button>
+                    <button id="btnThrow"><img src="/img/10_extras/throw.png" alt=""></button>
+                </div>
+                
+            </div>
             <div id="movementButtons" style="display: flex;">
                 <p> A - Move Left </p>
                 <p> D - Move Right </p>
                 <p> Space - Jump </p>
                 <p> F - Throw Bottle </p>
             </div>
+            <div class="buttons">
+                <img id="volumeIcon" onclick="toggleSound()" src="./img/10_extras/volume_off.png">
+                <img id="infoIcon" onclick="togglemovementButtons()" src="./img/10_extras/info.png">
+                <a id="privacyPolicyLink" href="./html/imprint-privacy-policy.html" target="_blank">
+                    <img src="./img/10_extras/policy.png"></a>
+                <img id="fullScreenIcon" onclick="toggleFullScreen()" src="./img/10_extras/fullscreen.png">
+            </div>
         </div>
-        <div class="buttons">
-            <img id="volumeIcon" onclick="toggleSound()" src="./img/10_extras/volume_off.png">
-            <img id="infoIcon" onclick="togglemovementButtons()" src="./img/10_extras/info.png">
-            <a id="privacyPolicyLink" href="./html/imprint-privacy-policy.html" target="_blank">
-                <img src="./img/10_extras/policy.png"></a>
-            <img id="fullScreenIcon" onclick="toggleFullScreen()" src="./img/10_extras/fullscreen.png">
-        </div>
+        
     <div id="rotateDeviceOverlay">
         <img id="rotateIcon" src="./img/10_extras/rotate.png">
         <p>Please rotate device</p>
