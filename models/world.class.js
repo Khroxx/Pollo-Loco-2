@@ -24,6 +24,7 @@ class World {
   bottle_sound = audio[2];
   coin_sound = audio[3];
   gameWon_sound = audio[9];
+  background_sound = audio[8];
   gameLost_sound = audio[10];
 
   constructor(canvas, keyboard) {
@@ -65,6 +66,8 @@ class World {
     this.run();
     this.gameWon_sound.pause();
     this.gameLost_sound.pause();
+    this.background_sound.play();
+    this.background_sound.volume = 0.05;
   }
 
   /**
@@ -86,6 +89,7 @@ class World {
   gameWon() {
     let wonScreen = document.getElementById("gameWonScreen");
     wonScreen.style.display = "flex";
+    this.background_sound.pause();
     this.gameWon_sound.play();
     this.gameWon_sound.volume = 0.3;
   }
@@ -96,6 +100,7 @@ class World {
   gameLost() {
     let lostScreen = document.getElementById("gameLostScreen");
     lostScreen.style.display = "flex";
+    this.background_sound.pause();
     this.gameLost_sound.play();
     this.gameLost_sound.volume = 0.3;
   }

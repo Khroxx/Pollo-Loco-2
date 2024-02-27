@@ -12,6 +12,7 @@ class Character extends MoveableObject {
   offsetRight = 25;
   running_sound = audio[0];
   jumping_sound = audio[1];
+  snoring_sound = audio[11];
   endScreen = document.getElementById("gameLostScreen");
 
   IMAGES_IDLE = [
@@ -104,11 +105,22 @@ class Character extends MoveableObject {
    * Handles the movement of the character.
    */
   movement() {
-    this.running_sound.volume = 0.5;
-    this.running_sound.play();
+    this.running_sound();
     this.movementLeft();
     this.movementRight();
     this.jumpMovement();
+  }
+
+  /**
+   * Plays the running sound when the character is moving.
+   */
+  running_sound() {
+    if (this.isMoving) {
+      this.running_sound.volume = 0.5;
+      this.running_sound.play();
+    } else {
+      this.running_sound.pause();
+    }
   }
 
   /**
@@ -132,7 +144,8 @@ class Character extends MoveableObject {
    */
   movementLeft() {
     if (this.world.keyboard.LEFT && this.x > 100) {
-      this.isMoving = true;
+      this.running_sound.volume = 0.5;
+      this.running_sound.play();
       this.moveLeft();
       this.timer = new Date().getTime();
       this.otherDirection = true;
@@ -160,6 +173,7 @@ class Character extends MoveableObject {
    * Handles the animation of the character based on its state.
    */
   characterAnimation() {
+    this.snoring_sound.pause();
     if (this.isDead()) {
       this.deathAnimation();
     } else if (this.isHurt()) {
@@ -168,7 +182,7 @@ class Character extends MoveableObject {
       this.playAnimation(this.IMAGES_JUMPING);
     } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
       this.playAnimation(this.IMAGES_WALKING);
-    } else {
+    } else if (!this.isHurt()){
       this.idleAnimation();
     }
   }
@@ -194,9 +208,12 @@ class Character extends MoveableObject {
    * Handles the idle animation of the character.
    */
   idleAnimation() {
-    const currentTime = new Date().getTime();
-    const timeSinceLastKeyPress = (currentTime - this.timer) / 1000;
-    if (timeSinceLastKeyPress > 20 && timeSinceLastKeyPress < 18) {
+    
+    let currentTime = new Date().getTime();
+    let timeSinceLastKeyPress = (currentTime - this.timer) / 1000;
+    if (timeSinceLastKeyPress > 15) {
+      this.snoring_sound.volume = 0.2;
+      this.snoring_sound.play();
       this.playAnimation(this.IMAGES_IDLE_LONG);
     } else if (timeSinceLastKeyPress <= 10) {
       this.playAnimation(this.IMAGES_IDLE);

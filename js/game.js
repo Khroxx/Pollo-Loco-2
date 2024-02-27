@@ -50,6 +50,14 @@ function playBackgroundSound() {
   background_sound.loop = true;
 }
 
+/**
+ * Stops the background sound.
+ */
+function stopBackgroundSound() {
+  let background_sound = audio[8];
+  background_sound.pause();
+}
+
 window.addEventListener("keydown", (event) => {
   if (event.keyCode == 68 || event.keyCode == 39) {
     keyboard.RIGHT = true;

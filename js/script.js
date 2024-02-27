@@ -15,7 +15,7 @@ async function showGame() {
  * Starts the background sound and hides the start button, start screen, loading screen, and movement buttons.
  */
 function loadGame() {
-    playBackgroundSound();
+    // playBackgroundSound();
     let startButton = document.getElementById("startGameButton");
     let loadingScreen = document.getElementById("loadingScreen");
     let startScreen = document.getElementById("startScreen");

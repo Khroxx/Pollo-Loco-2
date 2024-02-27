@@ -10,6 +10,7 @@ let audio = [
   new Audio("audio/background_music.mp3"),
   new Audio("audio/you_won.mp3"),
   new Audio("audio/game_over.mp3"),
+  new Audio("audio/snoring.mp3"),
 ];
 
 let sound = false;
@@ -37,7 +38,7 @@ function toggleSound() {
  */
 function muteSound() {
   let volumeIcon = document.getElementById("volumeIcon");
-  volumeIcon.src = "/img/10_extras/volume_off.png";
+  volumeIcon.src = "img/10_extras/volume_off.png";
   audio.forEach((sound) => {
     sound.muted = true;
     sound.pause();
@@ -51,15 +52,15 @@ function muteSound() {
  */
 function unmuteSound() {
   let volumeIcon = document.getElementById("volumeIcon");
-  volumeIcon.src = "/img/10_extras/volume.png";
+  volumeIcon.src = "img/10_extras/volume.png";
   audio.forEach((sound) => {
     sound.muted = false;
   });
   sound = true;
 
-  if (sound) {
-    audio[8].play();
-    audio[8].volume = 0.2;
-    audio[8].loop = true;
-  }
+  // if (sound) {
+  //   audio[8].play();
+  //   audio[8].volume = 0.2;
+  //   audio[8].loop = true;
+  // }
 }

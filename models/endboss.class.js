@@ -121,7 +121,7 @@ class Endboss extends MoveableObject {
     this.speedY = 5;
     this.playAnimation(this.ENDBOSS_ALERT);
     this.otherDirection = false;
-    this.speed = 0;
+    this.speed = 4;
   }
 
 
@@ -132,7 +132,7 @@ class Endboss extends MoveableObject {
     this.playAnimation(this.ENDBOSS_ATTACK);
     this.otherDirection = false;
     this.moveEndboss();
-    this.speed = 6;
+    this.speed = 8;
     this.speedY = 0;
   }
 
