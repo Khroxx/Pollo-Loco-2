@@ -284,7 +284,6 @@ canvas {
     display: inline-block;
     border-radius: 50%;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
     font-size: 30px;
     height: 60px;
     width: 60px;

@@ -57,10 +57,4 @@ function unmuteSound() {
     sound.muted = false;
   });
   sound = true;
-
-  // if (sound) {
-  //   audio[8].play();
-  //   audio[8].volume = 0.2;
-  //   audio[8].loop = true;
-  // }
 }

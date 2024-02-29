@@ -16,7 +16,6 @@ class DrawableObject {
     this.img.src = path;
   }
 
-
   /**
    * Loads multiple images from an array of paths and stores them in this object's imageCache.
    * @param {Array<string>} array - An array of paths to the images.
@@ -29,7 +28,6 @@ class DrawableObject {
     });
   }
 
-
   /**
    * Draws the image of this object on a given context.
    * @param {CanvasRenderingContext2D} ctx - The context to draw the image on.
@@ -37,7 +35,6 @@ class DrawableObject {
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
-
 
   /**
    * Draws a frame around this object on a given context if it is an instance of Character, Endboss, Bottle, or Coin.
@@ -53,14 +50,12 @@ class DrawableObject {
     }
   }
 
-
   /**
    * Clears all intervals.
    */
   clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
   }
-
 
   /**
    * Draws an offset frame around this object on a given context if it is an instance of Character, ChickenSmall, Endboss, or ThrowableObject.

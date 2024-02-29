@@ -74,6 +74,9 @@ class ThrowableObject extends MoveableObject {
     }, 80);
   }
 
+  /**
+   * Makes the bottle do the splash animation.
+   */
   splashBottle() {
     this.bottleSplash_sound.volume = 0.1;
     this.bottleSplash_sound.play();

@@ -29,6 +29,7 @@ class CoinsAmount extends DrawableObject {
       this.y + 25 + this.height / 2
     );
   }
+
   /**
    * Sets the amount of coins and updates the image.
    * @param {number} amount - The new amount of coins.
@@ -37,6 +38,7 @@ class CoinsAmount extends DrawableObject {
     this.coinAmount = Amount;
     this.showCoin();
   }
+
   /**
    * Updates the image to show the coins.
    */
@@ -44,6 +46,7 @@ class CoinsAmount extends DrawableObject {
     let path = this.IMAGE_COIN;
     this.img = this.imageCache[path];
   }
+  
   /**
    * Increases the amount of coins by one and updates the image.
    */

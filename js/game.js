@@ -90,35 +90,51 @@ window.addEventListener("keyup", (event) => {
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("btnLeft").addEventListener("touchstart", (event) => {
-    event.preventDefault();
+    if (event.cancelable) {
+      event.preventDefault();
+    }
     keyboard.LEFT = true;
   });
   document.getElementById("btnLeft").addEventListener("touchend", (event) => {
-    event.preventDefault();
+    if (event.cancelable) {
+      event.preventDefault();
+    }
     keyboard.LEFT = false;
   });
   document.getElementById("btnJump").addEventListener("touchstart", (event) => {
-    event.preventDefault();
+    if (event.cancelable) {
+      event.preventDefault();
+    }
     keyboard.JUMP = true;
   });
   document.getElementById("btnJump").addEventListener("touchend", (event) => {
-    event.preventDefault();
+    if (event.cancelable) {
+      event.preventDefault();
+    }
     keyboard.JUMP = false;
   });
   document.getElementById("btnRight").addEventListener("touchstart", (event) => {
+    if (event.cancelable) {
       event.preventDefault();
+    }
       keyboard.RIGHT = true;
     });
   document.getElementById("btnRight").addEventListener("touchend", (event) => {
-    event.preventDefault();
+    if (event.cancelable) {
+      event.preventDefault();
+    }
     keyboard.RIGHT = false;
   });
   document.getElementById("btnThrow").addEventListener("touchstart", (event) => {
+    if (event.cancelable) {
       event.preventDefault();
+    }
       keyboard.THROW = true;
     });
   document.getElementById("btnThrow").addEventListener("touchend", (event) => {
-    event.preventDefault();
+    if (event.cancelable) {
+      event.preventDefault();
+    }
     keyboard.THROW = false;
   });
 });

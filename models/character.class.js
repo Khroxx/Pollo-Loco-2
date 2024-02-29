@@ -2,7 +2,7 @@ class Character extends MoveableObject {
   height = 300;
   width = 150;
   y = 330;
-  speed = 10;
+  speed = 5;
   isMoving = false;
   timer = new Date().getTime();
   world;
@@ -101,23 +101,26 @@ class Character extends MoveableObject {
       this.characterAnimation();
     }, 100);
   }
+
   /**
    * Handles the movement of the character.
    */
   movement() {
-    this.running_sound();
+    this.isMoving = false;
     this.movementLeft();
     this.movementRight();
     this.jumpMovement();
+    this.checkMovement();
   }
 
   /**
-   * Plays the running sound when the character is moving.
-   */
-  running_sound() {
+  * Checks if the character is moving and plays or pauses the sound accordingly.
+  */
+  checkMovement() {
     if (this.isMoving) {
       this.running_sound.volume = 0.5;
       this.running_sound.play();
+      this.running_sound.loop = true;
     } else {
       this.running_sound.pause();
     }
@@ -134,8 +137,6 @@ class Character extends MoveableObject {
       if (this.world.camera_x > -3720 || this.world.camera_x < -4800) {
         this.world.camera_x = -this.x + 100;
       }
-    } else {
-      this.isMoving = false;
     }
   }
 
@@ -144,16 +145,13 @@ class Character extends MoveableObject {
    */
   movementLeft() {
     if (this.world.keyboard.LEFT && this.x > 100) {
-      this.running_sound.volume = 0.5;
-      this.running_sound.play();
+      this.isMoving = true;
       this.moveLeft();
       this.timer = new Date().getTime();
       this.otherDirection = true;
       if (this.world.camera_x > -3720 || this.x < 3720) {
         this.world.camera_x = -this.x + 100;
       }
-    } else {
-      this.isMoving = false;
     }
   }
 
@@ -208,7 +206,6 @@ class Character extends MoveableObject {
    * Handles the idle animation of the character.
    */
   idleAnimation() {
-    
     let currentTime = new Date().getTime();
     let timeSinceLastKeyPress = (currentTime - this.timer) / 1000;
     if (timeSinceLastKeyPress > 15) {

@@ -61,6 +61,7 @@
         font-size: 60px;
     }
 
+
 }
 
 @media only screen and (max-width: 530px) {
@@ -73,6 +74,7 @@
     #rotateDeviceOverlay {
         display: none;
     }
+
 }
 
 
@@ -89,8 +91,7 @@
 @media only screen and (max-height: 810px) {
     #movementButtons {
        display: none !important;
-        }
-
+    }
 }
 
 @media only screen and (max-height: 720px)  and (orientation: landscape){
@@ -106,6 +107,9 @@
     #gameScreen, #startScreen, #gameWonScreen, #gameLostScreen, #loadingScreen, canvas {
         height: 100%;
     }
+    #gameLostScreen, #gameWonScreen {
+        width: 100% !important;
+    }
     body{
         background-size: auto;
         height: 100vh;
@@ -118,6 +122,23 @@
 @media only screen and (max-height: 480px) and (orientation: landscape){
     #movementButtons {
         display: none !important;
+    }
+    #gameLost, #gameWon {
+        width: 100%;
+    }
+    .mobileButtons{
+        top: calc(100% - 64px);
+    }
+    #rotateDeviceOverlay {
+        display: none;
+    }
+    .buttons{
+        display: flex;
+        width: 40px;
+    }
+    #infoIcon, #privacyPolicyLink, #fullScreenIcon{
+        display: none;
+    
     }
     
 }
@@ -143,10 +164,7 @@
         height: 100%;
         border: unset;
     }
-    .mobileButtons{
-        top: 365px;
-    }
-    .buttons{
+    /* .buttons{
         display: none;
-    }
+    } */
 }

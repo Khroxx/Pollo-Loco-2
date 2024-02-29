@@ -34,6 +34,7 @@ class World {
     this.draw();
     this.setWorld();
     this.run();
+    this.spawnChickens();
   }
 
   /**
@@ -54,6 +55,17 @@ class World {
     this.level.enemies.push(new Endboss());
     for (let i = 0; i < 3; i++) {
       this.level.enemies.push(new ChickenSmall());
+    }
+  }
+
+  /**
+  * Spawns chickens when the boss is in alert mode.
+  */
+  spawnChickens() {
+    if (this.character.x > 3900 && !this.chickenSpawnInterval) {
+      this.chickenSpawnInterval = setInterval(() => {
+      this.level.enemies.push(new Chicken(5000));
+      }, 4000);
     }
   }
 
@@ -127,6 +139,7 @@ class World {
       this.checkCollisionsWithCoins();
       this.checkThrowObjects();
       this.checkCollisionsWithThrowables();
+      this.spawnChickens();
     }, 50);
   }
 
@@ -177,6 +190,7 @@ class World {
       }
     });
   }
+
   /**
    * Checks for collisions between all throwable objects and all enemies.
    */
@@ -332,7 +346,6 @@ class World {
     this.ctx.scale(-1, 1);
     mo.x = mo.x * -1;
   }
-
   
   /**
    * Flips an object's image horizontally to the right.

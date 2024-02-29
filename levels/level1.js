@@ -54,7 +54,6 @@ function createEnemies(){
   return []
 }
 
-
 /**
  * Creates the clouds for the level.
  * @returns {Cloud[]} An array of cloud objects.
@@ -67,7 +66,6 @@ function createClouds() {
     new Cloud(),
   ];
 }
-
 
 /**
  * Creates the bottles for the level.

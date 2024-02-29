@@ -59,10 +59,9 @@ class Endboss extends MoveableObject {
     this.loadImages(this.ENDBOSS_DEAD);
     this.loadImages(this.ENDBOSS_ATTACK);
     this.x = 4700;
-    this.speed = 2;
+    this.speed = 8;
     this.animate();
   }
-
 
   /**
    * Animates the end boss.
@@ -72,10 +71,10 @@ class Endboss extends MoveableObject {
       if (world) {
         this.bossAnimation();
         this.moveEndboss();
+        // this.spawnChicken();
       }
     }, 200);
   }
-
 
   /**
    * Controls the boss animation based on the current state of the boss.
@@ -91,11 +90,10 @@ class Endboss extends MoveableObject {
       this.attackMode();
     } else if (!this.isDead()) {
       this.moveEndboss();
-      this.speed = 3;
+      this.speed = 8;
       this.playAnimation(this.ENDBOSS_WALKING);
     }
   }
-
 
   /**
    * Plays the death animation for the boss.
@@ -113,7 +111,6 @@ class Endboss extends MoveableObject {
     }, 1000);
   }
 
-
   /**
    * Puts the boss in alert mode.
    */
@@ -121,9 +118,8 @@ class Endboss extends MoveableObject {
     this.speedY = 5;
     this.playAnimation(this.ENDBOSS_ALERT);
     this.otherDirection = false;
-    this.speed = 4;
+    this.speed = 7;
   }
-
 
   /**
    * Puts the boss in attack mode.
@@ -132,10 +128,9 @@ class Endboss extends MoveableObject {
     this.playAnimation(this.ENDBOSS_ATTACK);
     this.otherDirection = false;
     this.moveEndboss();
-    this.speed = 8;
+    this.speed = 20;
     this.speedY = 0;
   }
-
 
   /**
    * Stops the given animation.
@@ -145,7 +140,6 @@ class Endboss extends MoveableObject {
     clearInterval(animation);
   }
 
-
   /**
    * Checks if the character is within the alert distance of the boss.
    * @returns {boolean} True if the character is within the alert distance, false otherwise.
@@ -154,7 +148,6 @@ class Endboss extends MoveableObject {
     return world.character.x > 3900 && world.character.x < 4149;
   }
 
-
   /**
    * Checks if the character is within the attack distance of the boss.
    * @returns {boolean} True if the character is within the attack distance, false otherwise.
@@ -162,7 +155,6 @@ class Endboss extends MoveableObject {
   attackDistance() {
     return world.character.x > 4150;
   }
-
 
   /**
    * Moves the end boss based on the position of the character.
@@ -180,7 +172,6 @@ class Endboss extends MoveableObject {
     }
   }
 
-  
   /**
    * Moves the end boss left or right based on its current position.
    */

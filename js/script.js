@@ -15,7 +15,6 @@ async function showGame() {
  * Starts the background sound and hides the start button, start screen, loading screen, and movement buttons.
  */
 function loadGame() {
-    // playBackgroundSound();
     let startButton = document.getElementById("startGameButton");
     let loadingScreen = document.getElementById("loadingScreen");
     let startScreen = document.getElementById("startScreen");
@@ -25,9 +24,7 @@ function loadGame() {
     startScreen.style.display = "none";
     startButton.style.display = "none";
     loadingScreen.style.display = "none";
-    
 }
-
 
 /**
  * Hides the game lost screen, game won screen, and canvas, and displays the start button and start screen.
@@ -72,7 +69,6 @@ function closeMovementButtonsOutside(event) {
     }
 }
   
-
 /**
  * Requests full screen mode for the game screen.
  * @param {HTMLElement} gamescreen - The game screen element.
@@ -89,7 +85,6 @@ function requestFullScreen(gamescreen) {
   }
 }
 
-
 /**
  * Exits full screen mode.
  */
@@ -104,7 +99,6 @@ function exitFullScreen() {
     document.msExitFullscreen();
   }
 }
-
 
 /**
  * Toggles full screen mode for the game screen.
